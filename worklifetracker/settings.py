@@ -31,7 +31,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-sadaftariq-worklifetrac-t19qb9g77ji.ws-eu105.gitpod.io', 'work-life-tracker.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['8000-sadaftariq-worklifetrac-t19qb9g77ji.ws-eu105.gitpod.io', 'work-life-tracker-9f233fc79cb3.herokuapp.com', 'localhost']
 
 
 # Application definition
