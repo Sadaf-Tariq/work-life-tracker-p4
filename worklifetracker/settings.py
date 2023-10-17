@@ -33,6 +33,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['8000-sadaftariq-worklifetrac-t19qb9g77ji.ws-eu105.gitpod.io', 'work-life-tracker-9f233fc79cb3.herokuapp.com', 'localhost']
 
+AUTH_USER_MODEL = "users.CustomUser"
 
 # Application definition
 
@@ -46,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cloudinary',
     'dashboard',
+    'users',
 ]
 
 MIDDLEWARE = [
