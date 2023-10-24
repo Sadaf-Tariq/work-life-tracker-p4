@@ -5,6 +5,7 @@ from .forms import CustomUserCreationForm, CustomUserChangeForm
 from .models import CustomUser, Employee, Department
 
 
+@admin.register(CustomUser)
 class CustomUserAdmin(UserAdmin):
     add_form = CustomUserCreationForm
     form = CustomUserChangeForm
@@ -28,6 +29,9 @@ class CustomUserAdmin(UserAdmin):
     ordering = ("email",)
 
 
-admin.site.register(CustomUser, CustomUserAdmin)
-admin.site.register(Employee)
+@admin.register(Employee)
+class EmployeeAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('first_name', 'last_name',)}
+
+
 admin.site.register(Department)
