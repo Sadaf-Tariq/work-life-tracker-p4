@@ -46,8 +46,8 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
-    'dashboard',
     'users',
+    'recipe_blog',
 ]
 
 MIDDLEWARE = [

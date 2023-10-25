@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
 from .forms import CustomUserCreationForm, CustomUserChangeForm
-from .models import CustomUser, Employee, Department
+from .models import CustomUser
 
 
 @admin.register(CustomUser)
@@ -27,11 +27,3 @@ class CustomUserAdmin(UserAdmin):
     )
     search_fields = ("email",)
     ordering = ("email",)
-
-
-@admin.register(Employee)
-class EmployeeAdmin(admin.ModelAdmin):
-    prepopulated_fields = {'slug': ('first_name', 'last_name',)}
-
-
-admin.site.register(Department)
