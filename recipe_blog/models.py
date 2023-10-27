@@ -54,7 +54,7 @@ class Recipe(models.Model):
     method = models.ForeignKey(
         RecipeMethod, on_delete=models.PROTECT, related_name='method')
     slug = models.SlugField(max_length=100, unique=True)
-    author_name = models.CharField(max_length=150, unique=True, default="Enter your name")
+    author_name = models.CharField(max_length=150, default="Enter your name") #NO UNIQUE
     author_email = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, 
         related_name='published_recipes')
@@ -96,9 +96,11 @@ class Recipe(models.Model):
 
 
 class Rating(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE)
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
-    rating = models.PositiveIntegerField(blank=False, default=0)
+    rating = models.PositiveIntegerField(blank=False, default=0,
+        validators=[field_validation, MaxValueValidator(5)]) #validator addition
 
     def __str__(self):
         return f"{self.recipe.title}: {self.rating}"
