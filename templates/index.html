@@ -12,9 +12,11 @@
                     {% else %}
                         <img class="img-thumbnail" src=" {{ recipe.featured_image.url }}" alt="{{ recipe.title }}">
                     {% endif %}
-                    <div class="image-flash-title">
-                        <p class="author fontH">{{ recipe.title }}</p>
-                    </div>
+                    <a href="{% url 'full_recipe' recipe.slug %}" class="post-link">
+                        <div class="image-flash-title">
+                            <p class="author fontH">{{ recipe.title }}</p>
+                        </div>
+                    </a>
                     <div class="image-flash">
                         <p class="author fontH">Author: {{ recipe.author_name }}</p>
                     </div>
@@ -25,7 +27,13 @@
                     
                 </div>
             </div>
-            {% endfor %}
+            {% if forloop.counter|divisibleby:4 %}
+            </div>
+            <div class="row">
+                {% endif %}
+                {% endfor %}
+
+            </div>
         </div>
     
     {% if is_paginated %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block additional_styles %}
+<style>
+    body {
+        background-color: rgb(225, 221, 221);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-3" style="max-width: 33rem;">
+    <div class="card text-bg-secondary text-center mb-3">
+        <div class="card-body">
+            <h4 class="card-title welcome">Ooops!</h4>
+            <p class="card-text">I cannot find what you are looking for...</p>
+            <p class="card-text">The button below will take you back!</p>
+            <a href="{% url 'home' %}" class="btn btn-danger back">Back</a>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
