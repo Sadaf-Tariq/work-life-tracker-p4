@@ -104,7 +104,7 @@ body {
 .image-container {
     position: relative;
     height: 300px;
-    width: 300px;
+    width: 100%;
 }
 
 .image-container img {
@@ -129,6 +129,13 @@ body {
 .image-flash {
     position: absolute;
     bottom: 5%;
+    min-width: 30%;
+    left: -2px;
+    background-color: #E6BEAE;
+}
+.image-flash-title {
+    position: absolute;
+    bottom: 20%;
     min-width: 30%;
     left: -2px;
     background-color: #E6BEAE;

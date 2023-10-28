@@ -2,9 +2,9 @@
 {% block content %}
 
     <div class="container">
-        <div class="row">
+        <div class="row ">
             {% for recipe in recipe_list %}
-            <div class="card-margin col-12 col-sm-6 col-lg-3">
+            <div class="card-margin col-12 col-sm-6 col-lg-3 ">
                 <div class="image-container img-thumbnail-margin">
                     {% if "placeholder" in recipe.featured_image.url %}
                         <img class="img-thumbnail" src="https://res.cloudinary.com/djo7pphyn/image/upload/v1698436271/ujp4et9qmtsvztyj0png.jpg" 
@@ -12,11 +12,14 @@
                     {% else %}
                         <img class="img-thumbnail" src=" {{ recipe.featured_image.url }}" alt="{{ recipe.title }}">
                     {% endif %}
+                    <div class="image-flash-title">
+                        <p class="author fontH">{{ recipe.title }}</p>
+                    </div>
                     <div class="image-flash">
-                        <p class="author">Author: {{ recipe.author_name }}</p>
+                        <p class="author fontH">Author: {{ recipe.author_name }}</p>
                     </div>
                     
-                    <p><strong class="card-text">Rating: {{ recipe.average_rating }}/5.0 <i class="far fa-star"></i> | Likes: 
+                    <p><strong class="card-text fontM">Rating: {{ recipe.average_rating }}/5.0 <i class="far fa-star"></i> | Likes: 
                         {{ recipe.number_of_likes }} <i class="far fa-heart"></i></strong>
                     </p>
                     
