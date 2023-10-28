@@ -31,7 +31,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-sadaftariq-worklifetrac-t19qb9g77ji.ws-eu105.gitpod.io', 'work-life-tracker-9f233fc79cb3.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['8000-sadaf-tariq-work-life-tr-ahs5wro3mx.us2.codeanyapp.com', 'work-life-tracker-9f233fc79cb3.herokuapp.com', 'localhost']
 
 AUTH_USER_MODEL = "users.CustomUser"
 
@@ -93,10 +93,14 @@ WSGI_APPLICATION = 'worklifetracker.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-    'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
-}
+# DATABASES = {
+#     'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+# }
 
+DATABASE_URL = os.getenv('DATABASE_URL')
+DATABASES = {
+    'default': dj_database_url.config(),
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
