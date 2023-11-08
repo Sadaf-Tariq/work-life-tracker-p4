@@ -1,15 +1,23 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic
 from .models import Recipe, Rating
+from django.http import HttpRequest, HttpResponse
 
+# class RecipeList(generic.ListView):
 
-class RecipeList(generic.ListView):
-
-    model = Recipe
-    queryset = Recipe.objects.all().order_by('-created_on')
-    template_name = "index.html"
-    paginated_by = 6
+#     model = Recipe
+#     queryset = Recipe.objects.all().order_by('-created_on')
+#     template_name = "index.html"
+#     paginated_by = 6
     
+
+def index(request: HttpRequest) -> HttpResponse:
+    recipes = Recipe.objects.all()
+    for recipe in recipes:
+        rating = Rating.objects.filter(recipe=recipe, user=request.user).first()
+        recipe.user_rating = rating.rating if rating else 0
+    return render(request, "index.html", {"recipes": recipes})
+
 
 def full_recipe(request, slug, *args, **kwargs):
     """
@@ -58,3 +66,11 @@ def full_recipe(request, slug, *args, **kwargs):
            # "comment_form": comment_form
         },
     )
+
+
+
+def rate(request: HttpRequest, recipe_id: int, rating: int) -> HttpResponse:
+    recipe = Recipe.objects.get(id=recipe_id)
+    Rating.objects.filter(recipe=recipe).delete()
+    recipe.rating_set.create(user=request.user, rating=rating)
+    return index(request)

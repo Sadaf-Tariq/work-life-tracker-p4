@@ -31,7 +31,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-sadaf-tariq-work-life-tr-ahs5wro3mx.us2.codeanyapp.com', 'work-life-tracker-9f233fc79cb3.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['8000-sadaftariq-worklifetrac-ul1c7cjqbx5.ws-eu106.gitpod.io', 'work-life-tracker-9f233fc79cb3.herokuapp.com', 'localhost']
 
 AUTH_USER_MODEL = "users.CustomUser"
 
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.sites',
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
@@ -50,6 +51,10 @@ INSTALLED_APPS = [
     'users',
     'recipe_blog',
     'crispy_forms',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    "crispy_bootstrap4",
 ]
 
 MIDDLEWARE = [
@@ -61,6 +66,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+SITE_ID = 1
 
 ROOT_URLCONF = 'worklifetracker.urls'
 
@@ -120,7 +127,22 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+SOCIALACCOUNT_LOGIN_ON_GET=True
 
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
+
+CRISPY_TEMPLATE_PACK = "bootstrap4"
+
+ACCOUNT_EMAIL_VERIFICATION = 'none'
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
